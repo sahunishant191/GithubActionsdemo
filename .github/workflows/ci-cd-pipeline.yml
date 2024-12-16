@@ -41,9 +41,9 @@ jobs:
       run: |
         echo "$PRIVATE_KEY" > private_key
         chmod 600 private_key
-        scp -i private_key .env $USERNAME@$SERVER_IP:/path/to/deploy/.env
+        scp -i private_key .env $USERNAME@$SERVER_IP:/home/ubuntu/app/.env
         ssh -i private_key $USERNAME@$SERVER_IP << 'EOF'
-          cd /path/to/deploy
+          cd /home/ubuntu/app
           npm install
           pm2 restart all
         EOF
